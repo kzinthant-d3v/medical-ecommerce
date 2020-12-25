@@ -23,5 +23,11 @@ export const GlobalStyle = createGlobalStyle`
         h4 {
             ${heading(theme['font-size-sm'])}
         }
+        body {
+            background: ${theme.body};
+            color: ${theme.text};
+            font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
+            transition: all 0.50s linear;
+          }
     `}
 `;

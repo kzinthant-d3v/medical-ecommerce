@@ -15,7 +15,31 @@ const header_border_color = header_color;
 
 const border_width = `2px`;
 
-export const theme: Object = {
+export const lightTheme = {
+  body: '#FFF',
+  text: '#363537',
+  toggleBorder: '#FFF',
+  background: '#363537',
+    'font-size-xs': font_size_xs,
+  'font-size-sm': font_size_sm,
+  'font-size-md': font_size_md,
+  'font-size-lg': font_size_lg,
+  'font-size-xl': font_size_xl,
+  'padding-zero': padding_zero,
+  'padding-small': padding_small,
+  'margin-zero': margin_zero,
+  'margin-small': margin_small,
+  'heart-color': heart_color,
+  'border-color': border_color,
+  'border-width': border_width,
+  'header-color': header_color,
+  'header-border-color': header_border_color,
+}
+export const darkTheme = {
+  body: '#363537',
+  text: '#FAFAFA',
+  toggleBorder: '#6B8096',
+  background: '#999',
   'font-size-xs': font_size_xs,
   'font-size-sm': font_size_sm,
   'font-size-md': font_size_md,
@@ -30,4 +54,4 @@ export const theme: Object = {
   'border-width': border_width,
   'header-color': header_color,
   'header-border-color': header_border_color,
-};
+}

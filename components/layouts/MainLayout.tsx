@@ -1,12 +1,11 @@
 import { Component, ReactNode } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../utils/globalStyle';
-import { theme } from '../../utils/theme';
+import { lightTheme, darkTheme } from '../../utils/theme';
+import { useSelector } from 'react-redux'
 import Head from 'next/head';
 import { Layout } from 'antd';
-import styled from 'styled-components';
 
-const { Content } = Layout;
 
 const MainHead = ({ title }: { title: string }) => (
   <Head>
@@ -25,7 +24,7 @@ const MainHead = ({ title }: { title: string }) => (
     <meta property="og:image" content="/logo.svg" />
     <meta
       property="og:description"
-      content="A recipe discovery app powered by Next.js."
+      content="Medical Sales Ecommerce Myanmar"
     />
 
     <link
@@ -50,15 +49,14 @@ const MainHead = ({ title }: { title: string }) => (
 );
 
 
-export class MainLayout extends Component {
-  render() {
-
+export function MainLayout({children}) {  
+    const mode = useSelector(state => state.mode);
     return (
-      <ThemeProvider theme={theme}>
-
+      <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
+        <MainHead title="Medical"/> 
         <GlobalStyle />
-      
+        {children}
       </ThemeProvider>
     );
-  }
+  
 }
