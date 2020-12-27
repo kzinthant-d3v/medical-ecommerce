@@ -26,8 +26,8 @@ export default function SwitchMode({currentMode}){
 
   const dispatch = useDispatch();
   const [_, setCookie] = useCookies(["mode"]);
-  
-  const [mode, setMode ] = useState(currentMode === 'light' ? '🌞': '🌙');
+
+  const [mode, setMode ] = useState(currentMode === 'dark' ? '🌙': '🌞');
 
 
   function onChange(checked) {
@@ -51,7 +51,7 @@ export default function SwitchMode({currentMode}){
 
     return (      
       <SwitchPosition>
-        <Switch defaultChecked={currentMode === 'light'} onChange={onChange} />
+        <Switch defaultChecked={currentMode === 'light' || !currentMode} onChange={onChange} />
         <Mode>{mode}</Mode>
       </SwitchPosition>
       )
