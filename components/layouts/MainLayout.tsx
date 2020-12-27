@@ -5,6 +5,8 @@ import { lightTheme, darkTheme } from '../../utils/theme';
 import { useSelector } from 'react-redux'
 import Head from 'next/head';
 import { Layout } from 'antd';
+import { CookiesProvider } from "react-cookie"
+
 
 
 const MainHead = ({ title }: { title: string }) => (
@@ -50,12 +52,15 @@ const MainHead = ({ title }: { title: string }) => (
 
 
 export function MainLayout({children}) {  
-    const mode = useSelector(state => state.mode);
+    let mode = useSelector(state => state.mode);
+ 
     return (
       <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
         <MainHead title="Medical"/> 
         <GlobalStyle />
+        <CookiesProvider>
         {children}
+        </CookiesProvider>
       </ThemeProvider>
     );
   

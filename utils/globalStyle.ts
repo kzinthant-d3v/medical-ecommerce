@@ -10,7 +10,7 @@ export const heading = size => {
 };
 
 export const GlobalStyle = createGlobalStyle`
-    ${({ theme }) => `
+    ${({ theme }) => `{
         h1 {
             ${heading(theme['font-size-xl'])}
         }
@@ -29,5 +29,8 @@ export const GlobalStyle = createGlobalStyle`
             font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
             transition: all 0.50s linear;
           }
+        label {
+            color: ${theme.text} !important;
+        }
     `}
 `;
