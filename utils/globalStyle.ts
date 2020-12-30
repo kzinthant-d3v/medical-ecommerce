@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const heading = size => {
+export const heading = (size: string): string => {
   return `
         text-align: center;
         font-weight: bold;

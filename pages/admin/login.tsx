@@ -3,12 +3,12 @@ import AdminLayout from '../../components/layouts/AdminLayout';
 import { Form, Input, Button, Checkbox } from 'antd';
 import styled from 'styled-components';
 import { parseCookies } from '../../utils/cookieParser';
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeToDark, changeToLight } from '../../redux/modeSlices';
 import SwitchMode from '../../components/switch';
 
 const LoginForm = styled.div`
-  width:400px;
+  width: 400px;
   margin: 0 auto;
   margin-top: 200px;
 `;
@@ -19,18 +19,16 @@ const Title = styled.p`
   font-size: 20px;
 `;
 
-export default function Login({storedMode}){
+export default function Login({ storedMode }: { storedMode: { mode: string } }): JSX.Element {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(storedMode.mode === 'light'){
+  useEffect(() => {
+    if (storedMode.mode === 'light') {
       dispatch(changeToLight());
-    }else if(storedMode.mode === 'dark'){
+    } else {
       dispatch(changeToDark());
-    }else{
-
     }
-  },[]);
+  });
 
   const layout = {
     labelCol: { span: 8 },
@@ -39,62 +37,63 @@ export default function Login({storedMode}){
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
   };
-  const onFinish = values => {
+  const onFinish = (values): void => {
     console.log('Success:', values);
   };
 
-  const onFinishFailed = errorInfo => {
+  const onFinishFailed = (errorInfo): void => {
     console.log('Failed:', errorInfo);
   };
   return (
     <AdminLayout>
-      <SwitchMode currentMode={storedMode.mode}/>
-    <LoginForm>
-    <Title id="title">Admin Panel</Title>
+      <>
+        <SwitchMode currentMode={storedMode.mode} />
+        <LoginForm>
+          <Title id="title">Admin Panel</Title>
 
-        <Form
-      {...layout}
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
-      </Form.Item>
+          <Form
+            {...layout}
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[{ required: true, message: 'Please input your username!' }]}
+            >
+              <Input />
+            </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: 'Please input your password!' }]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+            <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Login
-        </Button>
-      </Form.Item>
-    </Form>
-    </LoginForm>
+            <Form.Item {...tailLayout}>
+              <Button type="primary" htmlType="submit">
+                Login
+              </Button>
+            </Form.Item>
+          </Form>
+        </LoginForm>
+      </>
     </AdminLayout>
-
-  )
+  );
 }
 
-Login.getInitialProps = async({req}) => {
+Login.getInitialProps = async ({ req }) => {
   const data = parseCookies(req);
 
   return {
     storedMode: data && data,
-  }
-}
+  };
+};

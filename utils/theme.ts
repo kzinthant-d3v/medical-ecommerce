@@ -20,7 +20,7 @@ export const lightTheme = {
   text: '#363537',
   toggleBorder: '#FFF',
   background: '#363537',
-    'font-size-xs': font_size_xs,
+  'font-size-xs': font_size_xs,
   'font-size-sm': font_size_sm,
   'font-size-md': font_size_md,
   'font-size-lg': font_size_lg,
@@ -34,7 +34,7 @@ export const lightTheme = {
   'border-width': border_width,
   'header-color': header_color,
   'header-border-color': header_border_color,
-}
+};
 export const darkTheme = {
   body: '#363537',
   text: '#FAFAFA',
@@ -54,4 +54,4 @@ export const darkTheme = {
   'border-width': border_width,
   'header-color': header_color,
   'header-border-color': header_border_color,
-}
+};

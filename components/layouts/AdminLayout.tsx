@@ -1,11 +1,8 @@
 import { MainLayout } from './MainLayout';
-export default function AdminLayout({children}){
 
-  return (
-    <MainLayout>
-  
-      {children}
-      
-      </MainLayout>
-  )
+type Props = {
+  children: JSX.Element;
+};
+export default function AdminLayout({ children }: Props): JSX.Element {
+  return <MainLayout>{children}</MainLayout>;
 }
