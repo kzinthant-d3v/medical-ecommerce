@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const NavContainer = styled.div`
   height: 100vh;
@@ -35,19 +36,27 @@ export default function Nav(): JSX.Element {
   return (
     <NavContainer>
       <NavBar>
-        <NavItem active={router.pathname === '/admin/home'}>
-          <i className="nav-icon fas fa-chart-line"></i>
-          Dashboard
-        </NavItem>
-        <NavItem active={router.pathname === '/admin/category'}>
-          <i className="nav-icon fas fa-bookmark"></i>Categories
-        </NavItem>
-        <NavItem active={router.pathname === '/admin/subcategory'}>
-          <i className="nav-icon fas fa-box-open"></i>Sub Categories
-        </NavItem>
-        <NavItem active={router.pathname === '/admin/product'}>
-          <i className="nav-icon fas fa-briefcase"></i>Products
-        </NavItem>
+        <Link href="/admin/home">
+          <NavItem active={router.pathname === '/admin/home'}>
+            <i className="nav-icon fas fa-chart-line"></i>
+            Dashboard
+          </NavItem>
+        </Link>
+        <Link href="/admin/category">
+          <NavItem active={router.pathname === '/admin/category'}>
+            <i className="nav-icon fas fa-bookmark"></i>Categories
+          </NavItem>
+        </Link>
+        <Link href="/admin/subcategory">
+          <NavItem active={router.pathname === '/admin/subcategory'}>
+            <i className="nav-icon fas fa-box-open"></i>Sub Categories
+          </NavItem>
+        </Link>
+        <Link href="/admin/product">
+          <NavItem active={router.pathname === '/admin/product'}>
+            <i className="nav-icon fas fa-briefcase"></i>Products
+          </NavItem>
+        </Link>
       </NavBar>
     </NavContainer>
   );
