@@ -6,7 +6,10 @@ import SwitchMode from '../../components/switch';
 import Nav from '../../components/Nav';
 import Cookies from 'js-cookie';
 
-export function AdminLayout(): JSX.Element {
+type AdminLayoutProps = {
+  children: JSX.Element;
+};
+export function AdminLayout({ children }: AdminLayoutProps): JSX.Element {
   const mode = Cookies.get('mode') || 'light';
   const dispatch = useDispatch();
 
@@ -22,7 +25,10 @@ export function AdminLayout(): JSX.Element {
     <MainLayout>
       <>
         <SwitchMode currentMode={mode} />
-        <Nav />
+        <div style={{ display: 'flex' }}>
+          <Nav />
+          {children}
+        </div>
       </>
     </MainLayout>
   );
