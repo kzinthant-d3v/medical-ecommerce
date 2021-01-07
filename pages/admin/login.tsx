@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import AdminLayout from '../../components/layouts/AdminLayout';
 import { Form, Input, Button, Checkbox } from 'antd';
 import styled from 'styled-components';
 import { parseCookies } from '../../utils/cookieParser';
 import { useDispatch } from 'react-redux';
 import { changeToDark, changeToLight } from '../../redux/modeSlices';
 import SwitchMode from '../../components/switch';
+import { MainLayout } from '../../components/layouts/MainLayout';
 
 const LoginForm = styled.div`
   width: 400px;
@@ -25,7 +25,7 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
   useEffect(() => {
     if (storedMode.mode === 'light') {
       dispatch(changeToLight());
-    } else {
+    } else if (storedMode.mode === 'dark') {
       dispatch(changeToDark());
     }
   });
@@ -45,7 +45,7 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
     console.log('Failed:', errorInfo);
   };
   return (
-    <AdminLayout>
+    <MainLayout>
       <>
         <SwitchMode currentMode={storedMode.mode} />
         <LoginForm>
@@ -86,7 +86,7 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
           </Form>
         </LoginForm>
       </>
-    </AdminLayout>
+    </MainLayout>
   );
 }
 
