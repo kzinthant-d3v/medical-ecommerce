@@ -1,10 +1,14 @@
 import firebase from '../firebase/config';
 
-export async function login(email: string, password: string) {
-  console.log(`checking ${email} ${password}`);
+interface User {
+  user: {
+    displayName: string;
+  };
+}
+console.log(process.env.NEXT_PUBLIC_TESTING);
+export async function login(email: string, password: string): Promise<User> {
   try {
     const user = await firebase.auth().signInWithEmailAndPassword(email, password);
-    console.log(user);
     return user;
   } catch (error) {
     return error.message;
