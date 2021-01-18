@@ -5,7 +5,7 @@ export default function SubCategory(): JSX.Element {
   return (
     <AdminLayout>
       <ManageLayout>
-        <h1>Subcategory</h1>
+        <h2>တစ်ခုခြင်း အမျိုးအစားများ</h2>
       </ManageLayout>
     </AdminLayout>
   );

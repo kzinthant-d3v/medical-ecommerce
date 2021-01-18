@@ -13,9 +13,11 @@ export const GlobalStyle = createGlobalStyle`
     ${({ theme }) => `{
         h1 {
             ${heading(theme['font-size-xl'])}
+            color: ${theme.text};
         }
         h2 {
             ${heading(theme['font-size-lg'])}
+            color: ${theme.text};
         }
         h3 {
             ${heading(theme['font-size-md'])}

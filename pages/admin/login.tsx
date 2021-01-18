@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { changeToDark, changeToLight } from '../../redux/modeSlices';
 import SwitchMode from '../../components/switch';
 import { MainLayout } from '../../components/layouts/MainLayout';
+import { login } from '../../services/AuthService';
+import firebase from '../../firebase/config';
+import { useRouter } from 'next/router';
 
 const LoginForm = styled.div`
   width: 400px;
@@ -21,12 +24,18 @@ const Title = styled.p`
 
 export default function Login({ storedMode }: { storedMode: { mode: string } }): JSX.Element {
   const dispatch = useDispatch();
-
+  const router = useRouter();
   useEffect(() => {
     if (storedMode.mode === 'light') {
       dispatch(changeToLight());
     } else if (storedMode.mode === 'dark') {
       dispatch(changeToDark());
+    }
+  });
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user && user.displayName === 'admin') {
+      router.push('/admin/home');
     }
   });
 
@@ -38,11 +47,11 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
     wrapperCol: { offset: 8, span: 16 },
   };
   const onFinish = (values): void => {
-    console.log('Success:', values);
+    login(values.username, values.password);
   };
 
   const onFinishFailed = (errorInfo): void => {
-    console.log('Failed:', errorInfo);
+    console.log(errorInfo);
   };
   return (
     <MainLayout>

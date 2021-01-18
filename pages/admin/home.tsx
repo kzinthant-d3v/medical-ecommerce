@@ -5,7 +5,7 @@ export default function Home(): JSX.Element {
   return (
     <AdminLayout>
       <ManageLayout>
-        <h1>Home</h1>
+        <h2>မှတ်တမ်းရေးရာ </h2>
       </ManageLayout>
     </AdminLayout>
   );

@@ -4,7 +4,7 @@ export default function Category(): JSX.Element {
   return (
     <AdminLayout>
       <ManageLayout>
-        <h1>Category</h1>
+        <h2>အမျိုးအမည်များ</h2>
       </ManageLayout>
     </AdminLayout>
   );

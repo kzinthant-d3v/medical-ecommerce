@@ -5,7 +5,7 @@ export default function Product(): JSX.Element {
   return (
     <AdminLayout>
       <ManageLayout>
-        <h1>Product</h1>
+        <h2>ပစ္စည်းများ</h2>
       </ManageLayout>
     </AdminLayout>
   );
