@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -39,11 +38,6 @@ export default function Nav(): JSX.Element {
 
   const mode = useSelector((state) => state.mode);
   const fillColor = mode === 'light' ? 'black' : 'white';
-  useEffect(() => {
-    if (firebase.auth().currentUser.displayName !== 'admin') {
-      router.push('/');
-    }
-  }, []);
   return (
     <NavContainer>
       <NavBar>
@@ -143,7 +137,11 @@ export default function Nav(): JSX.Element {
             <span>&nbsp;</span>ပစ္စည်းစီမံရန်
           </NavItem>
         </Link>
-        <NavItem>
+        <NavItem
+          onClick={() => {
+            firebase.auth().signOut();
+          }}
+        >
           <svg
             width="20"
             height="20"

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Form, Input, Button } from 'antd';
 import styled from 'styled-components';
 import { parseCookies } from '../../utils/cookieParser';
 import { useDispatch } from 'react-redux';
@@ -7,7 +7,6 @@ import { changeToDark, changeToLight } from '../../redux/modeSlices';
 import SwitchMode from '../../components/switch';
 import { MainLayout } from '../../components/layouts/MainLayout';
 import { login } from '../../services/AuthService';
-import firebase from '../../firebase/config';
 import { useRouter } from 'next/router';
 
 const LoginForm = styled.div`
@@ -24,18 +23,13 @@ const Title = styled.p`
 
 export default function Login({ storedMode }: { storedMode: { mode: string } }): JSX.Element {
   const dispatch = useDispatch();
+  const [error, setError] = useState('');
   const router = useRouter();
   useEffect(() => {
     if (storedMode.mode === 'light') {
       dispatch(changeToLight());
     } else if (storedMode.mode === 'dark') {
       dispatch(changeToDark());
-    }
-  });
-
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user && user.displayName === 'admin') {
-      router.push('/admin/home');
     }
   });
 
@@ -46,8 +40,10 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
   };
-  const onFinish = (values): void => {
-    login(values.username, values.password);
+  const onFinish = async (values): Promise<void> => {
+    const user = await login(values.username, values.password);
+    if (user.user && user.user.displayName === 'admin') router.push('/admin/home');
+    else setError('Email or Password is wrong!');
   };
 
   const onFinishFailed = (errorInfo): void => {
@@ -82,11 +78,9 @@ export default function Login({ storedMode }: { storedMode: { mode: string } }):
             >
               <Input.Password />
             </Form.Item>
-
-            <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
+            {error && (
+              <p style={{ color: 'red', textAlign: 'center', marginLeft: '50px' }}>{error}</p>
+            )}
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
                 Login
