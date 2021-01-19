@@ -15,7 +15,7 @@ export default function Category(): JSX.Element {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('Content of the modal');
   const router = useRouter();
-  const [currentBox, setCurrentBox] = useState();
+  const [currentBox, setCurrentBox] = useState({ _id: 0 });
   const queryClient = useQueryClient();
   function toRender(props: any): JSX.Element {
     return (
@@ -58,7 +58,7 @@ export default function Category(): JSX.Element {
   const handleOk = async () => {
     setModalText('ဖျက်နေပါသည်။ စောင့်ပါ');
     setConfirmLoading(true);
-    await mutate('http://localhost:3000/api/categories', 'DELETE', { id: currentBox?._id });
+    await mutate('http://localhost:3000/api/categories', 'DELETE', { id: currentBox._id });
     queryClient.invalidateQueries();
     setVisible(false);
     setConfirmLoading(false);
