@@ -73,7 +73,7 @@ export default function Category(): JSX.Element {
   let { data } = useCategory();
 
   if (data) {
-    data = data.map((e) => {
+    data = data.map((e: any) => {
       e.key = e._id;
       return e;
     });
@@ -91,7 +91,7 @@ export default function Category(): JSX.Element {
           </Button>
           <Table
             className={mode === 'dark' ? 'black' : ''}
-            columns={columns}
+            columns={columns as any}
             dataSource={data}
             scroll={{ x: 1000, y: 300 }}
           />
@@ -104,7 +104,6 @@ export default function Category(): JSX.Element {
             cancelText="မလုပ်ပါ"
             okText="ဖျက်ပါ"
             okButtonProps={{ danger: true }}
-            content="hi"
           >
             <p>{modalText}</p>
           </Modal>
