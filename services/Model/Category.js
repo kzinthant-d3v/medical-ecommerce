@@ -3,6 +3,10 @@ let Schema = mongoose.Schema;
 
 let CategorySchema = new Schema({
     name: String
+},{
+    timestamps: {
+        createdAt: 'created_at'
+    }
 })
 
 let category;

@@ -3,6 +3,11 @@ let Schema = mongoose.Schema;
 
 let CompanySchema = new Schema({
     name: String
+},
+{
+    timestamps: {
+        createdAt: 'created_at'
+    }
 })
 
 let company;

@@ -3,8 +3,13 @@ let Schema = mongoose.Schema;
 
 let SubcategorySchema = new Schema({
     name: String
-})
+},{
+    timestamps: {
+        createdAt: 'created_at'
+    }
+}
 
+)
 let subcategory;
 try {
     subcategory = mongoose.model('Subcategory');

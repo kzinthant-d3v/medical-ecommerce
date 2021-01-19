@@ -61,7 +61,7 @@ export default function Nav(): JSX.Element {
           </NavItem>
         </Link>
         <Link href="/admin/category">
-          <NavItem active={router.pathname === '/admin/category'}>
+          <NavItem active={router.pathname.includes('/admin/category')}>
             <svg
               width="20"
               height="20"

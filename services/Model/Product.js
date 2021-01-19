@@ -17,8 +17,14 @@ let ProductSchema = new Schema({
     subcategory:{
       type: Schema.Types.ObjectId, ref: 'Subcategory'}
     
-    })
+    },{
+      timestamps: {
+          createdAt: 'created_at'
+      }
+  }
 
+    )
+  
     let product;
     try {
         product = mongoose.model('Product');

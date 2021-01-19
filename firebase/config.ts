@@ -3,13 +3,13 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDtk1e_KanppPBYbv1ojF0cspoiEd0RzkE',
-  authDomain: 'ecommerceplatform-edaf4.firebaseapp.com',
-  projectId: 'ecommerceplatform-edaf4',
-  storageBucket: 'ecommerceplatform-edaf4.appspot.com',
-  messagingSenderId: '195669940772',
-  appId: '1:195669940772:web:45403b593af8622c7c56b1',
-  measurementId: 'G-167H6QDYHF',
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 if (!firebase.apps.length) {
