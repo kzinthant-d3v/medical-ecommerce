@@ -3,7 +3,7 @@ import {
   updateCategory,
   deleteCategory,
   createCategory,
-} from '../../services/Service.ts';
+} from '../../services/Service';
 
 export default async function handler(req, res) {
   switch (req.method) {

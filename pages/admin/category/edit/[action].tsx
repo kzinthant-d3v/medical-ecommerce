@@ -32,7 +32,7 @@ export default function EditCategory(): JSX.Element {
   useEffect(() => {
     router.query.action === 'change'
       ? (setTitle('အမျိုးအမည် ပြောင်းရန်'),
-        setInput(router.query.name ? router.query.name[0] : ''),
+        setInput(router.query.name ? (router.query.name as string) : ''),
         setBtnText('ပြောင်းပါ'))
       : '';
   }, [router]);
