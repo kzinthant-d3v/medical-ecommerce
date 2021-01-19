@@ -28,7 +28,7 @@ const MainHead = ({ title }: { title: string }): JSX.Element => (
 );
 
 type MainLayoutProps = {
-  children: JSX.Element;
+  children: JSX.Element | string;
 };
 export function MainLayout({ children }: MainLayoutProps): JSX.Element {
   const mode = useSelector((state) => state.mode);

@@ -34,7 +34,7 @@ export function AdminLayout({ children }: AdminLayoutProps): JSX.Element {
 
   return (
     <MainLayout>
-      {auth && (
+      {auth ? (
         <>
           <SwitchMode currentMode={mode} />
           <div style={{ display: 'flex' }}>
@@ -42,6 +42,8 @@ export function AdminLayout({ children }: AdminLayoutProps): JSX.Element {
             {children}
           </div>
         </>
+      ) : (
+        ''
       )}
     </MainLayout>
   );
