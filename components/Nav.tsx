@@ -26,7 +26,9 @@ const NavBar = styled.div`
 const NavItem = styled.div`
   display: flex;
   justify-content: flex-start;
-  background-color: ${(props) => (props.active ? props.theme.primaryLight : '')};
+  background-color: ${(props) => {
+    return (props as any).active ? props.theme.primaryLight : '';
+  }};
   width: 180px;
   padding: 10px 2px 10px 20px;
   margin-top: 20px;
@@ -36,7 +38,7 @@ const NavItem = styled.div`
 export default function Nav(): JSX.Element {
   const router = useRouter();
 
-  const mode = useSelector((state) => state.mode);
+  const mode = useSelector((state) => (state as any).mode);
   const fillColor = mode === 'light' ? 'black' : 'white';
   return (
     <NavContainer>
