@@ -9,11 +9,11 @@ import { mutate } from '../../../../utils/ajax';
 export default function EditCategory(): JSX.Element {
   const router = useRouter();
   const [title, setTitle] = useState('အမျိုးအစား အသစ်ထည့်ရန်');
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState<string>('');
   const [btnText, setBtnText] = useState('ထည့်ပါ');
   const [loading, setLoading] = useState(false);
 
-  async function handleClick() {
+  async function handleClick(): Promise<void> {
     if (router.query.action === 'add') {
       setLoading(true);
       await mutate(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/categories`, 'POST', {
@@ -31,7 +31,9 @@ export default function EditCategory(): JSX.Element {
   }
   useEffect(() => {
     router.query.action === 'change'
-      ? (setTitle('အမျိုးအမည် ပြောင်းရန်'), setInput(router.query.name), setBtnText('ပြောင်းပါ'))
+      ? (setTitle('အမျိုးအမည် ပြောင်းရန်'),
+        setInput(router.query.name ? router.query.name[0] : ''),
+        setBtnText('ပြောင်းပါ'))
       : '';
   }, [router]);
   return (
@@ -47,7 +49,7 @@ export default function EditCategory(): JSX.Element {
             <div style={{ textAlign: 'center', marginTop: '60px' }}>
               <TextArea
                 value={input}
-                onInput={(e) => setInput(e.target.value)}
+                onInput={(e) => setInput((e.target as any).value)}
                 style={{ width: '300px' }}
                 placeholder="အမျိုးအမည် ထည့်ပါ"
                 autoSize

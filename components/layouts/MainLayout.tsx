@@ -31,7 +31,7 @@ type MainLayoutProps = {
   children: JSX.Element | string;
 };
 export function MainLayout({ children }: MainLayoutProps): JSX.Element {
-  const mode = useSelector((state) => state.mode);
+  const mode = useSelector((state) => (state as any).mode);
 
   return (
     <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>

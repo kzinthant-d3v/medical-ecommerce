@@ -44,7 +44,9 @@ export default function Nav(): JSX.Element {
     <NavContainer>
       <NavBar>
         <Link href="/admin/home">
-          <NavItem active={router.pathname === '/admin/home'}>
+          <NavItem
+            style={{ backgroundColor: router.pathname.includes('/admin/home') ? 'white' : '' }}
+          >
             <svg
               width="20"
               height="20"
@@ -63,7 +65,9 @@ export default function Nav(): JSX.Element {
           </NavItem>
         </Link>
         <Link href="/admin/category">
-          <NavItem active={router.pathname.includes('/admin/category')}>
+          <NavItem
+            style={{ backgroundColor: router.pathname.includes('/admin/category') ? 'white' : '' }}
+          >
             <svg
               width="20"
               height="20"
@@ -92,7 +96,11 @@ export default function Nav(): JSX.Element {
           </NavItem>
         </Link>
         <Link href="/admin/subcategory">
-          <NavItem active={router.pathname === '/admin/subcategory'}>
+          <NavItem
+            style={{
+              backgroundColor: router.pathname.includes('/admin/subcategory') ? 'white' : '',
+            }}
+          >
             <svg
               width="22"
               height="20"
@@ -121,7 +129,11 @@ export default function Nav(): JSX.Element {
           </NavItem>
         </Link>
         <Link href="/admin/product">
-          <NavItem active={router.pathname === '/admin/product'}>
+          <NavItem
+            style={{
+              backgroundColor: router.pathname.includes('/admin/subcategory') ? 'white' : '',
+            }}
+          >
             <svg
               width="20"
               height="20"

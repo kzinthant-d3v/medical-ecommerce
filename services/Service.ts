@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
-const Company = require('./model/Company');
-const Category = require('./model/Category');
-const Subcategory = require('./model/Subcategory');
-const Product = require('./model/Product');
-
+import mongoose from 'mongoose';
+import Company from './Model/Company';
+import Category from './Model/Category';
+import Subcategory from './Model/Subcategory';
+import Product from './Model/Product';
 mongoose.connect(
   'mongodb+srv://kzinthant:u8Z6RBhreGmLb93F@cluster0.ss9il.mongodb.net/medtest?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }

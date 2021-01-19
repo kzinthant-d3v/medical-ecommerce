@@ -17,6 +17,27 @@ export default function Category(): JSX.Element {
   const router = useRouter();
   const [currentBox, setCurrentBox] = useState();
   const queryClient = useQueryClient();
+  function toRender(props: any): JSX.Element {
+    return (
+      <>
+        <a
+          href="#"
+          onClick={() =>
+            router.push({
+              pathname: '/admin/category/edit/change',
+              query: { name: props.name, id: props._id },
+            })
+          }
+        >
+          ပြောင်းရန်
+        </a>
+        /
+        <a href="#" style={{ color: 'red' }} onClick={() => showModal(props)}>
+          ဖျက်ရန်
+        </a>
+      </>
+    );
+  }
   const columns = [
     { title: 'အမည်', key: 'name', dataIndex: 'name' },
 
@@ -25,24 +46,7 @@ export default function Category(): JSX.Element {
       key: 'operation',
       fixed: 'right',
       width: 200,
-      render: (props): JSX.Element => (
-        <>
-          <a
-            onClick={() =>
-              router.push({
-                pathname: '/admin/category/edit/change',
-                query: { name: props.name, id: props._id },
-              })
-            }
-          >
-            ပြောင်းရန်
-          </a>
-          /
-          <a style={{ color: 'red' }} onClick={() => showModal(props)}>
-            ဖျက်ရန်
-          </a>
-        </>
-      ),
+      render: toRender,
     },
   ];
   const showModal = (props) => {
@@ -65,8 +69,8 @@ export default function Category(): JSX.Element {
     setVisible(false);
   };
 
-  const mode = useSelector((state) => state.mode);
-  let { data, isLoading, isFetching } = useCategory();
+  const mode = useSelector((state) => (state as any).mode);
+  let { data } = useCategory();
 
   if (data) {
     data = data.map((e) => {
