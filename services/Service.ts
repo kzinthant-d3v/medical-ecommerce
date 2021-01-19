@@ -12,10 +12,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {});
 
-async function createCompany(name) {
+export async function createCompany(name) {
   return await new Company({ name }).save();
 }
-async function updateCompany(newName, id) {
+export async function updateCompany(newName, id) {
   try {
     await Company.findOneAndUpdate({ _id: id }, { name: newName });
     return 'success';
@@ -23,7 +23,7 @@ async function updateCompany(newName, id) {
     return 'error';
   }
 }
-async function deleteCompany(id) {
+export async function deleteCompany(id) {
   try {
     await Company.deleteOne({ _id: id });
     return 'success';
@@ -31,13 +31,13 @@ async function deleteCompany(id) {
     return 'error';
   }
 }
-async function getCompany() {
+export async function getCompany() {
   return await Company.find({});
 }
-async function createCategory(name) {
+export async function createCategory(name) {
   return await new Category({ name }).save();
 }
-async function updateCategory(newName, id) {
+export async function updateCategory(newName, id) {
   try {
     await Category.findOneAndUpdate({ _id: id }, { name: newName });
     return 'success';
@@ -45,7 +45,7 @@ async function updateCategory(newName, id) {
     return 'error';
   }
 }
-async function deleteCategory(id) {
+export async function deleteCategory(id) {
   try {
     await Category.deleteOne({ _id: id });
     return 'success';
@@ -54,10 +54,10 @@ async function deleteCategory(id) {
   }
 }
 
-async function getCategory() {
+export async function getCategory() {
   return await Category.find({});
 }
-async function createSubcategory(name) {
+export async function createSubcategory(name) {
   try {
     await new Subcategory({ name }).save();
     return 'success';
@@ -65,7 +65,7 @@ async function createSubcategory(name) {
     return 'error';
   }
 }
-async function updateSubcategory(newName, id) {
+export async function updateSubcategory(newName, id) {
   try {
     await Subcategory.findOneAndUpdate({ _id: id }, { name: newName });
     return 'success';
@@ -73,7 +73,7 @@ async function updateSubcategory(newName, id) {
     return 'error';
   }
 }
-async function deleteSubcategory(id) {
+export async function deleteSubcategory(id) {
   try {
     await Subcategory.deleteOne({ _id: id });
     return 'success';
@@ -81,11 +81,11 @@ async function deleteSubcategory(id) {
     return 'error';
   }
 }
-async function getSubcategory() {
+export async function getSubcategory() {
   return await Subcategory.find({});
 }
 
-async function createProduct(
+export async function createProduct(
   name,
   chemicalName,
   photo,
@@ -111,13 +111,13 @@ async function createProduct(
   }
 }
 
-async function findProductByName(name) {
+export async function findProductByName(name) {
   return await Product.findOne({
     name: new RegExp(name, 'i'),
   }).exec();
 }
 
-async function findProductsByCategory(categoryId) {
+export async function findProductsByCategory(categoryId) {
   return await Product.find({
     categories: categoryId,
   })
@@ -130,20 +130,20 @@ async function findProductsByCategory(categoryId) {
     .exec();
 }
 
-module.exports = {
-  createCompany,
-  updateCompany,
-  deleteCompany,
-  getCompany,
-  createCategory,
-  updateCategory,
-  deleteCategory,
-  getCategory,
-  createSubcategory,
-  updateSubcategory,
-  deleteSubcategory,
-  getSubcategory,
-  createProduct,
-  findProductByName,
-  findProductsByCategory,
-};
+// module.exports = {
+//   createCompany,
+//   updateCompany,
+//   deleteCompany,
+//   getCompany,
+//   createCategory,
+//   updateCategory,
+//   deleteCategory,
+//   getCategory,
+//   createSubcategory,
+//   updateSubcategory,
+//   deleteSubcategory,
+//   getSubcategory,
+//   createProduct,
+//   findProductByName,
+//   findProductsByCategory,
+// };
