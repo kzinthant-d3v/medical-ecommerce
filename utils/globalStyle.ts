@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
 export const heading = (size: string): string => {
   return `
@@ -9,29 +9,37 @@ export const heading = (size: string): string => {
     `;
 };
 
+interface themeType extends DefaultTheme {
+  text: 'string';
+  body: 'string';
+  'font-size-xl': 'string';
+  'font-size-lg': 'string';
+  'font-size-md': 'string';
+  'font-size-sm': 'string';
+}
 export const GlobalStyle = createGlobalStyle`
     ${({ theme }) => `{
         h1 {
-            ${heading(theme['font-size-xl'])}
-            color: ${theme.text};
+            ${heading((theme as themeType)['font-size-xl'])}
+            color: ${(theme as themeType).text};
         }
         h2 {
-            ${heading(theme['font-size-lg'])}
-            color: ${theme.text};
+            ${heading((theme as themeType)['font-size-lg'])}
+            color: ${(theme as themeType).text};
         }
         h3 {
-            ${heading(theme['font-size-md'])}
+            ${heading((theme as themeType)['font-size-md'])}
         }
         h4 {
-            ${heading(theme['font-size-sm'])}
+            ${heading((theme as themeType)['font-size-sm'])}
         }
         body {
-            background: ${theme.body};
-            color: ${theme.text};
+            background: ${(theme as themeType).body};
+            color: ${(theme as themeType).text};
             transition: all 0.50s linear;
           }
         label {
-            color: ${theme.text} !important;
+            color: ${(theme as themeType).text} !important;
         }
     `}
 `;
