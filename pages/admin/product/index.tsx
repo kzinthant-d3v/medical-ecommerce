@@ -1,7 +1,7 @@
 import { AdminLayout } from '../../../components/layouts/AdminLayout';
 import ManageLayout from '../../../components/layouts/ManageLayout';
 
-export default function Category(): JSX.Element {
+export default function Product(): JSX.Element {
   return (
     <AdminLayout>
       <ManageLayout>
