@@ -3,10 +3,10 @@ import Company from './Model/Company';
 import Category from './Model/Category';
 import Subcategory from './Model/Subcategory';
 import Product from './Model/Product';
-mongoose.connect(
-  'mongodb+srv://kzinthant:u8Z6RBhreGmLb93F@cluster0.ss9il.mongodb.net/medtest?retryWrites=true&w=majority',
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.NEXT_PUBLIC_MONGO as string, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

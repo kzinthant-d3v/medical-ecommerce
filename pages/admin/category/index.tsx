@@ -58,7 +58,9 @@ export default function Category(): JSX.Element {
   const handleOk = async () => {
     setModalText('ဖျက်နေပါသည်။ စောင့်ပါ');
     setConfirmLoading(true);
-    await mutate('http://localhost:3000/api/categories', 'DELETE', { id: currentBox._id });
+    await mutate(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/categories`, 'DELETE', {
+      id: currentBox._id,
+    });
     queryClient.invalidateQueries();
     setVisible(false);
     setConfirmLoading(false);

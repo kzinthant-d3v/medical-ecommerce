@@ -39,13 +39,16 @@ export default function Nav(): JSX.Element {
   const router = useRouter();
 
   const mode = useSelector((state) => (state as any).mode);
-  const fillColor = mode === 'light' ? 'black' : 'white';
+  const fillColor = mode === 'light' ? 'black' : 'cyan';
   return (
     <NavContainer>
       <NavBar>
         <Link href="/admin/home">
           <NavItem
-            style={{ backgroundColor: router.pathname.includes('/admin/home') ? 'white' : '' }}
+            style={{
+              backgroundColor: router.pathname.includes('/admin/home') ? 'white' : '',
+              color: router.pathname.includes('/admin/home') ? 'black' : '',
+            }}
           >
             <svg
               width="20"
@@ -66,7 +69,10 @@ export default function Nav(): JSX.Element {
         </Link>
         <Link href="/admin/category">
           <NavItem
-            style={{ backgroundColor: router.pathname.includes('/admin/category') ? 'white' : '' }}
+            style={{
+              backgroundColor: router.pathname.includes('/admin/category') ? 'white' : '',
+              color: router.pathname.includes('/admin/category') ? 'black' : '',
+            }}
           >
             <svg
               width="20"
@@ -99,6 +105,7 @@ export default function Nav(): JSX.Element {
           <NavItem
             style={{
               backgroundColor: router.pathname.includes('/admin/subcategory') ? 'white' : '',
+              color: router.pathname.includes('/admin/subcategory') ? 'black' : '',
             }}
           >
             <svg
@@ -131,7 +138,8 @@ export default function Nav(): JSX.Element {
         <Link href="/admin/product">
           <NavItem
             style={{
-              backgroundColor: router.pathname.includes('/admin/subcategory') ? 'white' : '',
+              backgroundColor: router.pathname.includes('/admin/product') ? 'white' : '',
+              color: router.pathname.includes('/admin/product') ? 'black' : '',
             }}
           >
             <svg

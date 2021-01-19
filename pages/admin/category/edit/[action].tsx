@@ -50,11 +50,15 @@ export default function EditCategory(): JSX.Element {
               <TextArea
                 value={input}
                 onInput={(e) => setInput((e.target as any).value)}
-                style={{ width: '300px' }}
+                style={{ width: '500px' }}
                 placeholder="အမျိုးအမည် ထည့်ပါ"
                 autoSize
               />
-              <Button onClick={handleClick} disabled={router.query.name === input || !input}>
+              <Button
+                type="primary"
+                onClick={handleClick}
+                disabled={router.query.name === input || !input}
+              >
                 {btnText}
               </Button>
               <br />
