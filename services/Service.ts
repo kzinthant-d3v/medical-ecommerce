@@ -89,6 +89,7 @@ export async function createProduct(
   name,
   chemicalName,
   photo,
+  smallPhoto,
   pricePerItem,
   discountPrice,
   companyId,
@@ -100,6 +101,7 @@ export async function createProduct(
       name,
       chemicalName,
       photo,
+      smallPhoto,
       pricePerItem,
       discountPrice,
       companyId,
@@ -129,7 +131,60 @@ export async function findProductsByCategory(categoryId) {
     })
     .exec();
 }
-
+export async function getProducts(id) {
+  let options = {};
+  if (id) {
+    options = { _id: id };
+  }
+  return await Product.find(options)
+    .populate('companyId', 'name')
+    .populate('subcategory', 'name')
+    .populate({
+      path: 'categories',
+      select: 'name -_id',
+    })
+    .exec();
+}
+export async function updateProduct(
+  name,
+  chemicalName,
+  photo,
+  smallPhoto,
+  pricePerItem,
+  discountPrice,
+  companyId,
+  categories,
+  subcategory,
+  id: string
+) {
+  try {
+    await Product.findOneAndUpdate(
+      { _id: id },
+      {
+        name,
+        chemicalName,
+        photo,
+        smallPhoto,
+        pricePerItem,
+        discountPrice,
+        companyId,
+        categories,
+        subcategory,
+      }
+    );
+    return 'success';
+  } catch (e) {
+    return 'error';
+  }
+}
+export async function deleteProduct(id) {
+  try {
+    await Product.deleteOne({ _id: id });
+    return 'success';
+  } catch (e) {
+    return 'error';
+  }
+}
 // module.exports = {
 //   createCompany,
 //   updateCompany,

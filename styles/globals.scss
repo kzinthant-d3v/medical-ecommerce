@@ -31,3 +31,8 @@ body {
 .black .ant-table-body .ant-table-cell:hover {
   color: black;
 }
+
+.ReactCrop{
+  max-width: 600px !important;
+  max-height: 600px !important;
+}

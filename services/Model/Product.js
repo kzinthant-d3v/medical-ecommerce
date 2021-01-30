@@ -5,6 +5,7 @@ let ProductSchema = new Schema({
     name: String,
     chemicalName: String,
     photo: String,
+    smallPhoto: String,
     pricePerItem: Number,
     discountPrice:[String], 
     

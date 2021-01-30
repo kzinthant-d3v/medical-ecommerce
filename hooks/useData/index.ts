@@ -28,4 +28,23 @@ const fetchSubcategory = async () => {
 const useSubcategory = () => {
   return useQuery('subcategory', fetchSubcategory);
 };
-export { useCategory, fetchCategory, useCompany, fetchCompany, useSubcategory, fetchSubcategory };
+
+const fetchProducts = async () => {
+  const parsed = await fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/products`);
+  const result = await parsed.json();
+  return result;
+};
+
+const useProducts = () => {
+  return useQuery('product', fetchProducts);
+};
+export {
+  fetchProducts,
+  useProducts,
+  useCategory,
+  fetchCategory,
+  useCompany,
+  fetchCompany,
+  useSubcategory,
+  fetchSubcategory,
+};
