@@ -24,8 +24,8 @@ body {
 }
 
 .black .ant-table-body .ant-table-cell {
-  background-color: rgb(8, 28, 71);
-  color: rgb(15, 233, 168);
+  background-color: rgb(37, 38, 39);
+  color: rgb(250, 250, 250);
 }
 
 .black .ant-table-body .ant-table-cell:hover {
@@ -35,4 +35,75 @@ body {
 .ReactCrop{
   max-width: 600px !important;
   max-height: 600px !important;
+}
+
+.priceinput{
+  background-color: rgb(230, 235, 235);
+  color: black;
+  border:none;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.priceinput:focus{
+  outline: none;
+}
+
+.unitinput{
+  background-color: rgb(230, 235, 235);
+  color: black;
+  border:none;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  margin-left: 2px;
+  width: 60px;
+ margin-top: 8px; 
+}
+
+.unitinput:focus{
+  outline: none;
+}
+.unit{
+  display: inline-block;
+  background-color: rgb(230, 235, 235);
+  color: black;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 24px;
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 30px;
+}
+
+input[type=text]{
+  background-color: rgba(255, 255, 255, 0);
+  font-weight: bold;
+  color: rgb(72, 184, 7);
+}
+
+.ant-select-selector{
+  background-color: rgba(255, 255, 255, 0.062) !important;
+  font-weight: bold;
+  color: rgb(4, 211, 248);
+}
+
+#img-sample{
+  margin: 0 auto;
+  width: 400px;
+  height: 500px;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(112, 112, 112);
 }

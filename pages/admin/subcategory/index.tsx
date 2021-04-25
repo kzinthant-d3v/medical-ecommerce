@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { AdminLayout } from '../../../components/layouts/AdminLayout';
 import ManageLayout from '../../../components/layouts/ManageLayout';
 import { Button, Table } from 'antd';
@@ -72,10 +72,11 @@ export default function Category(): JSX.Element {
   };
 
   const mode = useSelector((state) => (state as any).mode);
-  let { data } = useSubcategory();
+  const { data, isLoading } = useSubcategory();
+  const columnData = useRef(null);
 
   if (data) {
-    data = data.map((e: any) => {
+    columnData.current = data.map((e: any) => {
       e.key = e._id;
       return e;
     });
@@ -96,6 +97,7 @@ export default function Category(): JSX.Element {
             columns={columns as any}
             dataSource={data}
             scroll={{ x: 1000, y: 300 }}
+            loading={isLoading}
           />
           <Modal
             title="ဖျက်ရန် သေချာပြီလား?"

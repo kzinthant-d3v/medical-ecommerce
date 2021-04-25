@@ -89,10 +89,8 @@ export default function Category(): JSX.Element {
     });
   }
   useEffect(() => {
-    if (data) {
-      setShowData(data);
-      setLoading(false);
-    }
+    setShowData(data);
+    setLoading(false);
   }, []);
 
   function search(term) {
@@ -150,7 +148,7 @@ export default function Category(): JSX.Element {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery('company', fetchCompany);

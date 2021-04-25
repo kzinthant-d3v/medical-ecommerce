@@ -10,7 +10,9 @@ mongoose.connect(process.env.NEXT_PUBLIC_MONGO as string, {
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {});
+db.once('open', () => {
+  console.log('db opened');
+});
 
 export async function createCompany(name) {
   return await new Company({ name }).save();

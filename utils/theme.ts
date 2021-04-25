@@ -11,7 +11,7 @@ const font_size_xl = `2.0em`;
 const border_width = `2px`;
 
 export const lightTheme = {
-  primary: '#e3f2fd',
+  primary: '#fafafa',
   primaryLight: '#ffffff',
   primaryDark: '#b1bfca',
   secondary: '#e0f2f1',
@@ -33,9 +33,9 @@ export const lightTheme = {
   'border-width': border_width,
 };
 export const darkTheme = {
-  primary: '#304ffe',
+  primary: '#2d3a67',
   primaryLight: '#7a7cff',
-  primaryDark: '#0026ca',
+  primaryDark: '#ffffff',
   secondary: '#0091ea',
   secondaryLight: '#64c1ff',
   secondaryDark: '#0091ea',

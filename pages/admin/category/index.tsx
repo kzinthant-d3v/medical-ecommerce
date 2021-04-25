@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AdminLayout } from '../../../components/layouts/AdminLayout';
 import ManageLayout from '../../../components/layouts/ManageLayout';
 import { Button, Input, Table } from 'antd';
@@ -16,7 +16,6 @@ export default function Category(): JSX.Element {
   const [modalText, setModalText] = useState('Content of the modal');
   const router = useRouter();
   const [currentBox, setCurrentBox] = useState({ _id: 0 });
-  const [loading, setLoading] = useState(true);
   const [showData, setShowData] = useState([]);
 
   const queryClient = useQueryClient();
@@ -78,19 +77,18 @@ export default function Category(): JSX.Element {
   };
 
   const mode = useSelector((state) => (state as any).mode);
-  let { data } = useCategory();
+  const { data, isLoading } = useCategory();
+  const columnData = useRef(null);
 
   if (data) {
-    data = data.map((e: any) => {
+    columnData.current = data.map((e: any) => {
       e.key = e._id;
       return e;
     });
   }
+
   useEffect(() => {
-    if (data) {
-      setShowData(data);
-      setLoading(false);
-    }
+    setShowData(columnData.current);
   }, []);
 
   function search(term) {
@@ -128,7 +126,7 @@ export default function Category(): JSX.Element {
             columns={columns as any}
             dataSource={showData}
             scroll={{ x: 1000, y: 300 }}
-            loading={loading}
+            loading={isLoading}
           />
           <Modal
             title="ဖျက်ရန် သေချာပြီလား?"
@@ -148,7 +146,7 @@ export default function Category(): JSX.Element {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery('category', fetchCategory);
